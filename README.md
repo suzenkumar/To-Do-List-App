@@ -2,6 +2,11 @@
 A simple and beautiful To-Do List application built using **HTML, CSS, and JavaScript**.  
 Users can add tasks, mark them as completed, and delete them easily.
 
+
+## 📸 Screenshot  
+
+![Project Screenshot](https://github.com/suzenkumar/To-Do-List-App/blob/main/Screenshot%202025-12-11%20103405.png)
+
 ---
 
 ## 🚀 Features
@@ -15,8 +20,7 @@ Users can add tasks, mark them as completed, and delete them easily.
 
 ---
 
-## 📸 Screenshot  
-(Add your project screenshot here)
+
 
 ---
 
