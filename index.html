@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            background:linear-gradient(135deg, #0edbc7, #cc00ff);
+        }
+
+        .todo-container{
+        
+            width:350px;
+            padding:25px;
+            border-radius: 20px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.2);
+
+        }
+
+        h2{
+            margin-bottom: 15px;
+            color:white;
+            text-align: center;
+        }
+        .input-box{
+            display: flex;
+            gap: 10px;
+            margin-bottom:20px;
+        }
+        input{
+            flex: 1;
+            padding:12px;
+            border-radius: 25px;
+            border:1px solid #ccc;
+            outline:none; 
+
+        }
+        button{
+            padding: 12px 20px;
+            background:#ff644c;
+            border: none;
+            color: #fff;
+            border-radius: 25px;
+            cursor:pointer;
+            transition:0.2s;
+        }
+        button:hover{
+            background:#ff3b21;
+        }
+        ul li {
+            list-style: none;
+            padding:12px;
+            background: #f7f7f7;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+
+        }
+
+        ul li.checked{
+            text-decoration: line-through;
+            color:#888;
+        }
+
+        .circle{
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            border:2px solid #999;
+            margin-right:10px;
+            cursor:pointer;
+        }
+        .circle.checked{
+            background: #ff644c;
+            border-color: #ff644c;
+        }
+
+        .delete-btn{
+            cursor:pointer;
+            font-size:18px;
+            color:#888;
+        }
+
+         .delete-btn:hover{
+            color:#ff3b21;
+        }
+
+
+    </style>
+    </head>
+    <body>
+        <div class="todo-container">
+
+            <h2>To Do List</h2>
+
+            <div class="input-box">
+                <input type="text" id="taskInput" placeholder="Add your task">
+                <button onclick="addTask()">ADD</button>
+            </div>
+              <ul id="taskList"></ul>
+        </div>
+
+    </body>
+    <script>
+      // Get input box and list container
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+// Add a new task
+function addTask() {
+    let taskText = taskInput.value.trim(); // remove extra spaces
+
+    if (taskText === "") {
+        alert("Please enter a task");
+        return;
+    }
+
+    // Create list item
+    let li = document.createElement("li");
+
+    li.innerHTML = `
+        <div class="task-row">
+            <div class="circle" onclick="toggleCheck(this)"></div>
+            <span>${taskText}</span>
+        </div>
+
+        <span class="delete-btn" onclick="deleteTask(this)">×</span>
+    `;
+
+    taskList.appendChild(li); // add task to list
+    taskInput.value = "";     // clear input box
+}
+
+// Mark task as completed
+function toggleCheck(element) {
+    let li = element.parentElement.parentElement;
+    element.classList.toggle("checked");
+    li.classList.toggle("checked"); // strike-through effect
+}
+
+// Delete task
+function deleteTask(element) {
+    element.parentElement.remove();
+}
+
+
+    </script>
+</html>
